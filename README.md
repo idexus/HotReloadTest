@@ -7,7 +7,7 @@ This is a Hot Reload test of working with the [__Sharp.UI__](https://github.com/
 </a>
 
 
-Known limitations:
+# Known limitations
 
 - Does not work for classes with automatically generated code, e.g. for classes with automatically generated bindable properties
 - Does not work if you want to use the Sharp.UI library by project reference. Use nuget package.
