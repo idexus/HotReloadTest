@@ -8,16 +8,16 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: global::Microsoft.Maui.Controls.Xaml.XamlResourceId("Hot Reload Test.Resources.Styles.Styles.xaml", "Resources/Styles/Styles.xaml", typeof(global::__XamlGeneratedCode__.__Type9932A3C0F8A3906A))]
+[assembly: global::Microsoft.Maui.Controls.Xaml.XamlResourceId("HotReloadTest.Resources.Styles.Styles.xaml", "Resources/Styles/Styles.xaml", typeof(global::__XamlGeneratedCode__.__Type1BD86F7829EFDF8D))]
 namespace __XamlGeneratedCode__
 {
-	[global::Microsoft.Maui.Controls.Xaml.XamlFilePath("Resources/Styles/Styles.xaml")]
+	[global::Microsoft.Maui.Controls.Xaml.XamlFilePath("Resources\\Styles\\Styles.xaml")]
 	[global::Microsoft.Maui.Controls.Xaml.XamlCompilation(global::Microsoft.Maui.Controls.Xaml.XamlCompilationOptions.Compile)]
 	[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
-	public partial class __Type9932A3C0F8A3906A : global::Microsoft.Maui.Controls.ResourceDictionary
+	public partial class __Type1BD86F7829EFDF8D : global::Microsoft.Maui.Controls.ResourceDictionary
 	{
 		[global::System.CodeDom.Compiler.GeneratedCode("Microsoft.Maui.Controls.SourceGen", "1.0.0.0")]
-		public __Type9932A3C0F8A3906A()
+		public __Type1BD86F7829EFDF8D()
 		{
 			InitializeComponent();
 		}
@@ -27,7 +27,7 @@ namespace __XamlGeneratedCode__
 #endif
 		private void InitializeComponent()
 		{
-			global::Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml(this, typeof(__Type9932A3C0F8A3906A));
+			global::Microsoft.Maui.Controls.Xaml.Extensions.LoadFromXaml(this, typeof(__Type1BD86F7829EFDF8D));
 		}
 	}
 }
