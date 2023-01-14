@@ -1,6 +1,6 @@
 # Hot Reload - Sharp.UI
 
-This is a Hot Reload test example of working with the [__Sharp.UI__](https://github.com/idexus/Sharp.UI) library using Visual Studio 2022 or Visual Studio Code and [Reloadify3000](https://github.com/Clancey/Reloadify3000) library with [vscode-comet](https://github.com/Clancey/vscode-comet) plugin.
+This is a Hot Reload test example of working with the [__Sharp.UI__](https://github.com/idexus/Sharp.UI) library using Visual Studio 2022 (only win) or Visual Studio Code and [Reloadify3000](https://github.com/Clancey/Reloadify3000) library with [vscode-comet](https://github.com/Clancey/vscode-comet) plugin.
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=Bu7CDc8_hqw" target="_blank">
  <img src="http://img.youtube.com/vi/Bu7CDc8_hqw/mqdefault.jpg" alt="Watch the video" width="640" height="360" border="10" />
