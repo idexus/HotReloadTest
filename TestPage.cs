@@ -2,7 +2,7 @@
 using Sharp.UI;
 
 public partial class TestPage : ContentPage
-{     
+{
     public TestPage()
     {
         this.BindingContext = SimpleModel.Current;
@@ -23,42 +23,40 @@ public partial class TestPage : ContentPage
                     new Grid
                     {
                         new Label()
-                            .Text(e => e.Path("Value").Source(slider).StringFormat("Value {0:F1}"))
-                            .TextColor(AppColors.Gray200)
+                            .FontSize(40)
+                            .Text(e => e.Path("Value").Source(slider).StringFormat("Value : {0:F1}"))
                             .HorizontalOptions(LayoutOptions.Center)
                             .VerticalOptions(LayoutOptions.Center)
-                            .FontSize(30),
+                            .TextColor(AppColors.Gray200),
 
                         new Image("dotnet_bot.png").Row(1),
 
-                        new Label("Hello, world").Row(2)
+                        new Label("Hello, World").Row(2)
+                            .FontSize(30)
                             .TextColor(AppColors.Gray200)
                             .HorizontalOptions(LayoutOptions.Center)
                             .VerticalOptions(LayoutOptions.Center)
-                            .FontSize(30)
-
                     }
                     .RowDefinitions(e => e.Star().Star(2).Star())
                 }
                 .SizeRequest(300, 500)
-                .StrokeShape(new RoundRectangle().CornerRadius(40))
-                .Background(Colors.DarkSlateGray),
+                .StrokeShape(new RoundRectangle().CornerRadius(30))
+                .BackgroundColor(Colors.DarkSlateGray),
 
                 new Label()
                     .Text(e => e.Path("Counter").StringFormat("Counter : {0}"))
                     .TextColor(Colors.Red)
                     .FontSize(40)
                     .HorizontalOptions(LayoutOptions.Center)
-                    .Margin(30),
+                    .Margin(20),
 
                 new Button("Count")
                     .WidthRequest(300)
                     .FontSize(30)
-                    .OnClicked(button => 
+                    .OnClicked(button =>
                     {
                         SimpleModel.Current.Counter += 1;
                     })
-
             }
             .VerticalOptions(LayoutOptions.Center)
         }
