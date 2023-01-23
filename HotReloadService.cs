@@ -4,7 +4,7 @@
 
 [assembly: System.Reflection.Metadata.MetadataUpdateHandlerAttribute(typeof(ExampleApp.HotReloadService))]
 namespace ExampleApp
-{
+{ 
     using Sharp.UI;
 
     public static class HotReloadService

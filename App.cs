@@ -1,18 +1,20 @@
 ﻿namespace HotReloadTest;
 
+using System;
+using System.IO;
+using System.IO.Pipes;
+using System.Reflection;
+using System.Runtime;
+using System.Runtime.Loader;
 using Sharp.UI;
- 
-public partial class App : Application
-{
-    public static int Counter = 1;
-                  
-    public App()
-    {
-        Reloadify.Reload.Instance.ReplaceType = e => HotReload.ReplaceWithType(e.Type);
-        Reloadify.Reload.Instance.FinishedReload = () => HotReload.TriggerHotReload();
-        Reloadify.Reload.Init();
+using System.Reflection.Emit;
+using System.Threading;
 
-        Resources = AppResources.Default;
+
+public partial class App : Application
+{     
+    public App()  
+    {
         MainPage = new TestPage();
     }
 }

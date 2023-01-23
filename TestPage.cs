@@ -1,22 +1,28 @@
 ﻿namespace HotReloadTest;
-using Sharp.UI;
 
-public partial class TestPage : ContentPage
+using Sharp.UI;
+using System.Linq;
+
+
+[SharpObject]
+[ViewModel(typeof(MyViewModel))] 
+public partial class TestPage : ContentPage 
 {
     public TestPage()
     {
-        this.BindingContext = SimpleModel.Current;
+        Resources = AppResources.Default;
         Content = new Grid
         {
-            new VStack
+            new VStack   
             {
                 new Label("Hot Reload Test")
-                    .FontSize(60)
+                    .FontSize(50)
                     .TextColor(Colors.Red)
                     .HorizontalOptions(LayoutOptions.Center),
 
-                new Slider(1, 100, 1, out var slider)
-                    .Margin(new Thickness(50, 20)),
+                new Slider(1, 20, 1, out var slider)
+                    .Value(e => e.Path(nameof(MyViewModel.SliderValue)))
+                    .Margin(new Thickness(80, 30)),
 
                 new Border
                 {
@@ -32,10 +38,10 @@ public partial class TestPage : ContentPage
                         new Image("dotnet_bot.png").Row(1),
 
                         new Label("Hello, World").Row(2)
-                            .FontSize(30)
+                            .FontSize(40)
                             .TextColor(AppColors.Gray200)
                             .HorizontalOptions(LayoutOptions.Center)
-                            .VerticalOptions(LayoutOptions.Center)
+                            .VerticalOptions(LayoutOptions.Center),
                     }
                     .RowDefinitions(e => e.Star().Star(2).Star())
                 }
@@ -46,17 +52,14 @@ public partial class TestPage : ContentPage
                 new Label()
                     .Text(e => e.Path("Counter").StringFormat("Counter : {0}"))
                     .TextColor(Colors.Red)
-                    .FontSize(40)
+                    .FontSize(50)
                     .HorizontalOptions(LayoutOptions.Center)
                     .Margin(20),
 
                 new Button("Count")
                     .WidthRequest(300)
                     .FontSize(30)
-                    .OnClicked(button =>
-                    {
-                        SimpleModel.Current.Counter += 1;
-                    })
+                    .Command(e => e.Path(nameof(MyViewModel.CountCommand)))
             }
             .VerticalOptions(LayoutOptions.Center)
         }

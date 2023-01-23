@@ -5,47 +5,30 @@
 #pragma warning disable CS8669
 
 
-namespace TestPackage
-{
+namespace HotReloadTest
+{  
     using Sharp.UI;
 
-    public partial class TestClass
+    public partial class TestPage
     {
         // ----- constructors -----
 
-        public TestClass() { }
-
-        public TestClass(out TestClass testClass) 
+        public TestPage(out TestPage testPage) : this()
         {
-            testClass = this;
+            testPage = this;
         }
 
-        public TestClass(System.Action<TestClass> configure) 
+        public TestPage(System.Action<TestPage> configure) : this()
         {
             configure(this);
         }
 
-        public TestClass(out TestClass testClass, System.Action<TestClass> configure) 
+        public TestPage(out TestPage testPage, System.Action<TestPage> configure) : this()
         {
-            testClass = this;
+            testPage = this;
             configure(this);
         }
 
-        // ----- bindable properties -----
-
-        public static readonly Microsoft.Maui.Controls.BindableProperty TestProperty =
-            BindableProperty.Create(
-                nameof(Test),
-                typeof(string),
-                typeof(TestPackage.TestClass),
-                default(string));
-
-        public string Test
-        {
-            get => (string)GetValue(TestProperty);
-            set => SetValue(TestProperty, value);
-        }
-        
         // ----- set value method -----
 
         public new void SetValue(Microsoft.Maui.Controls.BindableProperty property, object value)
