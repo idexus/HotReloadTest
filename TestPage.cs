@@ -13,15 +13,15 @@ public partial class TestPage : ContentPage
         Resources = AppResources.Default;
         Content = new Grid
         {
-            new VStack   
+            new VStack
             {
                 new Label("Hot Reload Test")
-                    .FontSize(50)
+                    .FontSize(60)
                     .TextColor(Colors.Red)
                     .HorizontalOptions(LayoutOptions.Center),
 
                 new Slider(1, 20, 1, out var slider)
-                    .Value(e => e.Path(nameof(MyViewModel.SliderValue)))
+                    .Value(e => e.Path("SliderValue"))
                     .Margin(new Thickness(80, 30)),
 
                 new Border
@@ -39,9 +39,10 @@ public partial class TestPage : ContentPage
 
                         new Label("Hello, World").Row(2)
                             .FontSize(40)
-                            .TextColor(AppColors.Gray200)
                             .HorizontalOptions(LayoutOptions.Center)
-                            .VerticalOptions(LayoutOptions.Center),
+                            .VerticalOptions(LayoutOptions.Center)
+                            .TextColor(AppColors.Gray200)
+
                     }
                     .RowDefinitions(e => e.Star().Star(2).Star())
                 }
@@ -59,10 +60,11 @@ public partial class TestPage : ContentPage
                 new Button("Count")
                     .WidthRequest(300)
                     .FontSize(30)
-                    .Command(e => e.Path(nameof(MyViewModel.CountCommand)))
+                    .Command(e => e.Path("CountCommand"))
+
             }
             .VerticalOptions(LayoutOptions.Center)
         }
-        .Background(AppColors.Gray950);
+        .BackgroundColor(AppColors.Gray950);
     }
 }
