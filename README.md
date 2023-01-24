@@ -9,7 +9,7 @@ You can use hot reload for content pages created in [Sharp.UI](https://github.co
 ## Visual Studio 2022 (Mac)
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=r3Ri4VHYo7I" target="_blank">
- <img src="http://img.youtube.com/vi/r3Ri4VHYo7I/mqdefault.jpg" alt="Watch the video" width="640" height="360" border="10" />
+ <img src="https://github.com/idexus/Sharp.UI/blob/main/doc/assets/output.gif?raw=true" alt="Watch the video" width="640" height="360" border="10" />
 </a>
 
 ## Visual Studio 2022 (Win)
