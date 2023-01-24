@@ -6,18 +6,22 @@ You can use hot reload for content pages created in [Sharp.UI](https://github.co
 - using Visual Studio 2022 for Windows and [System.Reflection.Metadata.MetadataUpdateHandlerAttribute](https://learn.microsoft.com/en-us/dotnet/api/system.reflection.metadata.metadataupdatehandlerattribute?view=net-7.0&viewFallbackFrom=net-5.0)
 - using Visual Studio Code and [Reloadify3000](https://github.com/Clancey/Reloadify3000) library with [vscode-comet](https://github.com/Clancey/vscode-comet) plugin 
 
-## Visual Studio Code
+## Visual Studio 2022 (Mac)
 
-Visual Studio Code and [Reloadify3000](https://github.com/Clancey/Reloadify3000) library with [vscode-comet](https://github.com/Clancey/vscode-comet) plugin
-
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=Bu7CDc8_hqw" target="_blank">
- <img src="http://img.youtube.com/vi/Bu7CDc8_hqw/mqdefault.jpg" alt="Watch the video" width="640" height="360" border="10" />
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=r3Ri4VHYo7I" target="_blank">
+ <img src="http://img.youtube.com/vi/r3Ri4VHYo7I/mqdefault.jpg" alt="Watch the video" width="640" height="360" border="10" />
 </a>
 
-## Visual Studio 2022 (win only)
+## Visual Studio 2022 (Win)
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=YitedYYS1Zo" target="_blank">
  <img src="http://img.youtube.com/vi/YitedYYS1Zo/mqdefault.jpg" alt="Watch the video" width="640" height="360" border="10" />
+</a>
+
+## Visual Studio Code (Mac)
+
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=Bu7CDc8_hqw" target="_blank">
+ <img src="http://img.youtube.com/vi/Bu7CDc8_hqw/mqdefault.jpg" alt="Watch the video" width="640" height="360" border="10" />
 </a>
 
 ### Known limitations
