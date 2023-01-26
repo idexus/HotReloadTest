@@ -18,10 +18,10 @@ namespace HotReloadTest
                 });
 
             builder.Services.AddSingleton<MyViewModel>();
+            builder.Services.AddSingleton<TestPage>();
 
             var mauiApp = builder.Build();
 
-#if DEBUG
             // vs code hot reload
             Reloadify.Reload.Instance.ReplaceType = e => HotReload.ReplaceWithType(e.Type);
             Reloadify.Reload.Instance.FinishedReload = () => HotReload.TriggerHotReload();
@@ -29,7 +29,6 @@ namespace HotReloadTest
 
             // vs 2022 mac
             HotReload.InitSharpUIHotReload<App>(mauiApp);
-#endif
 
             return mauiApp;
         }

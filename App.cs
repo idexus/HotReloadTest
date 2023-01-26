@@ -12,9 +12,9 @@ using System.Threading;
 
 
 public partial class App : Application
-{     
-    public App()  
+{
+    public App()
     {
-        MainPage = new TestPage();
+        MainPage = ActivatorUtilities.CreateInstance<TestPage>(HotReload.ServiceProvider);
     }
 }

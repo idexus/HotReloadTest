@@ -13,13 +13,6 @@ public interface IMyViewModel
 [SharpObject]
 public partial class MyViewModel : BindableObject, IMyViewModel
 {
-    public ICommand CountCommand { get; }
-
-    public MyViewModel()
-    {
-        CountCommand = new Command(Count);
-    }
-
     public void Count()
     {
         Counter += 1;

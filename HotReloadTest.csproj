@@ -63,7 +63,7 @@
 
 	<ItemGroup>
 		<PackageReference Include="Reloadify3000" Version="1.0.8" />
-		<PackageReference Include="Sharp.UI" Version="0.2.4-alpha.1" />
+		<PackageReference Include="Sharp.UI" Version="0.2.5-alpha.1" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Compile Update="Platforms\Windows\App.xaml.cs">

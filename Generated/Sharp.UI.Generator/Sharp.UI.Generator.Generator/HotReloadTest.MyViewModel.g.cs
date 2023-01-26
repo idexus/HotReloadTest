@@ -13,17 +13,19 @@ namespace HotReloadTest
     {
         // ----- constructors -----
 
-        public MyViewModel(out MyViewModel myViewModel) : this()
+        public MyViewModel() { }
+
+        public MyViewModel(out MyViewModel myViewModel) 
         {
             myViewModel = this;
         }
 
-        public MyViewModel(System.Action<MyViewModel> configure) : this()
+        public MyViewModel(System.Action<MyViewModel> configure) 
         {
             configure(this);
         }
 
-        public MyViewModel(out MyViewModel myViewModel, System.Action<MyViewModel> configure) : this()
+        public MyViewModel(out MyViewModel myViewModel, System.Action<MyViewModel> configure) 
         {
             myViewModel = this;
             configure(this);

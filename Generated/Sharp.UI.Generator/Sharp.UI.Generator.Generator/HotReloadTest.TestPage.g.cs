@@ -13,17 +13,35 @@ namespace HotReloadTest
     {
         // ----- constructors -----
 
-        public TestPage(out TestPage testPage) : this()
+        public TestPage() { }
+
+        public TestPage(out TestPage testPage) 
         {
             testPage = this;
         }
 
-        public TestPage(System.Action<TestPage> configure) : this()
+        public TestPage(System.Action<TestPage> configure) 
         {
             configure(this);
         }
 
-        public TestPage(out TestPage testPage, System.Action<TestPage> configure) : this()
+        public TestPage(out TestPage testPage, System.Action<TestPage> configure) 
+        {
+            testPage = this;
+            configure(this);
+        }
+
+        public TestPage(HotReloadTest.MyViewModel viewModel, out TestPage testPage) : this(viewModel)
+        {
+            testPage = this;
+        }
+
+        public TestPage(HotReloadTest.MyViewModel viewModel, System.Action<TestPage> configure) : this(viewModel)
+        {
+            configure(this);
+        }
+
+        public TestPage(HotReloadTest.MyViewModel viewModel, out TestPage testPage, System.Action<TestPage> configure) : this(viewModel)
         {
             testPage = this;
             configure(this);

@@ -5,17 +5,19 @@ using System.Linq;
 
 
 [SharpObject]
-[ViewModel(typeof(MyViewModel))] 
 public partial class TestPage : ContentPage 
 {
-    public TestPage()
+    MyViewModel viewModel => BindingContext as MyViewModel;
+
+    public TestPage(MyViewModel viewModel)
     {
+        BindingContext = viewModel;
         Resources = AppResources.Default;
         Content = new Grid
         {
             new VStack
             {
-                new Label("Hot Reload Test")
+                new Label("Hot Reload Test") 
                     .FontSize(60)
                     .TextColor(Colors.Red)
                     .HorizontalOptions(LayoutOptions.Center),
@@ -60,7 +62,7 @@ public partial class TestPage : ContentPage
                 new Button("Count")
                     .WidthRequest(300)
                     .FontSize(30)
-                    .Command(e => e.Path("CountCommand"))
+                    .OnClicked(button => viewModel.Count())
 
             }
             .VerticalOptions(LayoutOptions.Center)
