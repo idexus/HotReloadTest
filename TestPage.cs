@@ -1,10 +1,9 @@
-﻿namespace HotReloadTest;
+﻿namespace HotReloadTestApp;
 
 using Sharp.UI;
 using System.Linq;
 
 
-[SharpObject]
 public partial class TestPage : ContentPage 
 {
     MyViewModel viewModel => BindingContext as MyViewModel;
@@ -17,8 +16,8 @@ public partial class TestPage : ContentPage
         {
             new VStack
             {
-                new Label("Hot Reload Test") 
-                    .FontSize(60)
+                new Label("Hot Reload Test")
+                    .FontSize(e => e.Default(43).OnDesktop(60))
                     .TextColor(Colors.Red)
                     .HorizontalOptions(LayoutOptions.Center),
 
@@ -31,7 +30,7 @@ public partial class TestPage : ContentPage
                     new Grid
                     {
                         new Label()
-                            .FontSize(40)
+                            .FontSize(e => e.Default(40).OnDesktop(50))
                             .Text(e => e.Path("Value").Source(slider).StringFormat("Value : {0:F1}"))
                             .HorizontalOptions(LayoutOptions.Center)
                             .VerticalOptions(LayoutOptions.Center)
@@ -40,7 +39,7 @@ public partial class TestPage : ContentPage
                         new Image("dotnet_bot.png").Row(1),
 
                         new Label("Hello, World").Row(2)
-                            .FontSize(40)
+                            .FontSize(e => e.Default(30).OnDesktop(40))
                             .HorizontalOptions(LayoutOptions.Center)
                             .VerticalOptions(LayoutOptions.Center)
                             .TextColor(AppColors.Gray200)
@@ -48,20 +47,21 @@ public partial class TestPage : ContentPage
                     }
                     .RowDefinitions(e => e.Star().Star(2).Star())
                 }
-                .SizeRequest(300, 500)
+                .WidthRequest(e => e.Default(250).OnDesktop(300))
+                .HeightRequest(e => e.Default(400).OnDesktop(500))
                 .StrokeShape(new RoundRectangle().CornerRadius(30))
                 .BackgroundColor(Colors.DarkSlateGray),
 
                 new Label()
                     .Text(e => e.Path("Counter").StringFormat("Counter : {0}"))
                     .TextColor(Colors.Red)
-                    .FontSize(50)
+                    .FontSize(e => e.Default(50).OnAndroid(40))
                     .HorizontalOptions(LayoutOptions.Center)
                     .Margin(20),
 
                 new Button("Count")
-                    .WidthRequest(300)
-                    .FontSize(30)
+                    .WidthRequest(e => e.Default(300).OnAndroid(250))
+                    .FontSize(27)
                     .OnClicked(button => viewModel.Count())
 
             }

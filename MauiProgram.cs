@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace HotReloadTest
+namespace HotReloadTestApp
 {
     using Sharp.UI;
 
@@ -8,8 +8,15 @@ namespace HotReloadTest
     {
         public static MauiApp CreateMauiApp()
         {
+            
+            // vs code hot reload
+            //Reloadify.Reload.Instance.ReplaceType = e => HotReload.ReplaceWithType(e.Type);
+            //Reloadify.Reload.Instance.FinishedReload = () => HotReload.TriggerHotReload();
+            //Reloadify.Reload.Init();
+
             var builder = MauiApp.CreateBuilder();
             builder
+                .SharpUIApplication<App>(HotReloadSupport.IdeIPs)
                 .UseMauiApp<App>()
                 .ConfigureFonts(fonts =>
                 {
@@ -20,17 +27,7 @@ namespace HotReloadTest
             builder.Services.AddSingleton<MyViewModel>();
             builder.Services.AddSingleton<TestPage>();
 
-            var mauiApp = builder.Build();
-
-            // vs code hot reload
-            Reloadify.Reload.Instance.ReplaceType = e => HotReload.ReplaceWithType(e.Type);
-            Reloadify.Reload.Instance.FinishedReload = () => HotReload.TriggerHotReload();
-            Reloadify.Reload.Init();
-
-            // vs 2022 mac
-            HotReload.InitSharpUIHotReload<App>(mauiApp);
-
-            return mauiApp;
+            return builder.Build();
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using Android.App;
 using Android.Runtime;
 
-namespace TestPackage;
+namespace HotReloadTestApp;
 
 [Application]
 public class MainApplication : MauiApplication

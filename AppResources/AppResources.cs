@@ -1,4 +1,4 @@
-﻿namespace HotReloadTest;
+﻿namespace HotReloadTestApp;
 
 using Sharp.UI;
 

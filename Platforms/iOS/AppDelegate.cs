@@ -1,6 +1,6 @@
 ﻿using Foundation;
 
-namespace TestPackage;
+namespace HotReloadTestApp;
 
 [Register("AppDelegate")]
 public class AppDelegate : MauiUIApplicationDelegate

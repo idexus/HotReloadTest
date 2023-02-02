@@ -1,7 +1,7 @@
 ﻿using ObjCRuntime;
 using UIKit;
 
-namespace HotReloadTest;
+namespace HotReloadTestApp;
 
 public class Program
 {

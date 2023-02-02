@@ -2,7 +2,7 @@
 using Microsoft.Maui;
 using Microsoft.Maui.Hosting;
 
-namespace HotReloadTest;
+namespace HotReloadTestApp;
 
 class Program : MauiApplication
 {
