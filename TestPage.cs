@@ -3,20 +3,27 @@
 using Sharp.UI;
 using System.Linq;
 
+[BindableProperties]
+public interface ITestPage
+{
+    public int Counter { get; set; }
+}
 
-public partial class TestPage : ContentPage 
+[SharpObject]
+public partial class TestPage : ContentPage, ITestPage
 {
     MyViewModel viewModel => BindingContext as MyViewModel;
 
     public TestPage(MyViewModel viewModel)
     {
+        this.Counter = 0;
         BindingContext = viewModel;
         Resources = AppResources.Default;
         Content = new Grid
         {
             new VStack
             {
-                new Label("Hot Reload Test")
+                new Label($"Hot Reload", out var label)
                     .FontSize(e => e.Default(43).OnDesktop(60))
                     .TextColor(Colors.Red)
                     .HorizontalOptions(LayoutOptions.Center),
@@ -62,7 +69,12 @@ public partial class TestPage : ContentPage
                 new Button("Count")
                     .WidthRequest(e => e.Default(300).OnAndroid(250))
                     .FontSize(27)
-                    .OnClicked(button => viewModel.Count())
+                    .OnClicked(button =>
+                    {
+                        this.Counter += 1;
+                        label.Text = $"View Counter: {Counter}";
+                        viewModel.Count();
+                    })
 
             }
             .VerticalOptions(LayoutOptions.Center)
