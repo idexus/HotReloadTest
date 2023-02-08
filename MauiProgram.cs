@@ -8,13 +8,8 @@ namespace HotReloadTestApp
     {
         public static MauiApp CreateMauiApp()
         {
-            
-            // vs code hot reload
-            //Reloadify.Reload.Instance.ReplaceType = e => HotReload.ReplaceWithType(e.Type);
-            //Reloadify.Reload.Instance.FinishedReload = () => HotReload.TriggerHotReload();
-            //Reloadify.Reload.Init();
-
             var builder = MauiApp.CreateBuilder();
+
             builder
                 .SharpUIApplication<App>(HotReloadSupport.IdeIPs)
                 .UseMauiApp<App>()

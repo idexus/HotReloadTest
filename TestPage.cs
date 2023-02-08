@@ -23,12 +23,12 @@ public partial class TestPage : ContentPage, ITestPage
         {
             new VStack
             {
-                new Label($"Hot Reload", out var label)
+                new Label($"Hot Reload Test", out var label)
                     .FontSize(e => e.Default(43).OnDesktop(60))
                     .TextColor(Colors.Red)
                     .HorizontalOptions(LayoutOptions.Center),
 
-                new Slider(1, 20, 1, out var slider)
+                new Slider(1, 20, 1, out var slider) 
                     .Value(e => e.Path("SliderValue"))
                     .Margin(new Thickness(80, 30)),
 

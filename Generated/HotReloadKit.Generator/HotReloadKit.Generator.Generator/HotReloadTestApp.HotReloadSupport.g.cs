@@ -13,8 +13,8 @@ namespace HotReloadTestApp
         public static IPAddress[] IdeIPs =
 #if DEBUG
         {
-            new IPAddress(new byte[] {127, 0, 0, 1}),
-            new IPAddress(new byte[] {10, 0, 7, 56}),
+            new IPAddress(new byte[] {10, 0, 7, 220}),
+            new IPAddress(new byte[] {172, 28, 16, 1}),
         };
 #else
         { };
