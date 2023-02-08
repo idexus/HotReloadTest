@@ -29,21 +29,6 @@ namespace HotReloadTestApp
             configure(this);
         }
 
-        // ----- bindable properties -----
-
-        public static readonly Microsoft.Maui.Controls.BindableProperty CounterProperty =
-            BindableProperty.Create(
-                nameof(Counter),
-                typeof(int),
-                typeof(HotReloadTestApp.TestPage),
-                default(int));
-
-        public int Counter
-        {
-            get => (int)GetValue(CounterProperty);
-            set => SetValue(CounterProperty, value);
-        }
-
         // ----- set value method -----
 
         public new void SetValue(Microsoft.Maui.Controls.BindableProperty property, object value)
