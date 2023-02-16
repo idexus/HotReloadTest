@@ -11,7 +11,7 @@
 [assembly: global::Microsoft.Maui.Controls.Xaml.XamlResourceId("HotReloadTestAppApp.Resources.Styles.Colors.xaml", "Resources/Styles/Colors.xaml", typeof(global::__XamlGeneratedCode__.__TypeBEB7849685C03048))]
 namespace __XamlGeneratedCode__
 {
-	[global::Microsoft.Maui.Controls.Xaml.XamlFilePath("Resources/Styles/Colors.xaml")]
+	[global::Microsoft.Maui.Controls.Xaml.XamlFilePath("Resources\\Styles\\Colors.xaml")]
 	[global::Microsoft.Maui.Controls.Xaml.XamlCompilation(global::Microsoft.Maui.Controls.Xaml.XamlCompilationOptions.Compile)]
 	[global::System.ComponentModel.EditorBrowsable(global::System.ComponentModel.EditorBrowsableState.Never)]
 	public partial class __TypeBEB7849685C03048 : global::Microsoft.Maui.Controls.ResourceDictionary

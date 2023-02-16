@@ -31,16 +31,6 @@ namespace HotReloadTestApp
         }
         
         public static T Counter<T>(this T obj,
-            System.Func<LazyValueBuilder<int>, LazyValueBuilder<int>> buildValue)
-            where T : HotReloadTestApp.MyViewModel
-        {
-            var mauiObject = MauiWrapper.Value<HotReloadTestApp.MyViewModel>(obj);
-            var builder = buildValue(new LazyValueBuilder<int>());
-            if (builder.ValueIsSet()) mauiObject.SetValue(HotReloadTestApp.MyViewModel.CounterProperty, builder.GetValue());
-            return obj;
-        }
-        
-        public static T Counter<T>(this T obj,
             System.Func<BindingBuilder<int>, BindingBuilder<int>> buildBinding)
             where T : HotReloadTestApp.MyViewModel
         {
@@ -65,16 +55,6 @@ namespace HotReloadTestApp
         {
             var mauiObject = MauiWrapper.Value<HotReloadTestApp.MyViewModel>(obj);
             var builder = buildValue(new ValueBuilder<double>());
-            if (builder.ValueIsSet()) mauiObject.SetValue(HotReloadTestApp.MyViewModel.SliderValueProperty, builder.GetValue());
-            return obj;
-        }
-        
-        public static T SliderValue<T>(this T obj,
-            System.Func<LazyValueBuilder<double>, LazyValueBuilder<double>> buildValue)
-            where T : HotReloadTestApp.MyViewModel
-        {
-            var mauiObject = MauiWrapper.Value<HotReloadTestApp.MyViewModel>(obj);
-            var builder = buildValue(new LazyValueBuilder<double>());
             if (builder.ValueIsSet()) mauiObject.SetValue(HotReloadTestApp.MyViewModel.SliderValueProperty, builder.GetValue());
             return obj;
         }

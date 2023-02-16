@@ -14,6 +14,9 @@ public partial class TestPage : ContentPage
 
         Content = new VStack
         {
+            e => e
+                .VerticalOptions(LayoutOptions.Center),
+
             new Label("Hot Reload :)")
                 .FontSize(45)
                 .TextColor(Colors.Red)
@@ -23,13 +26,17 @@ public partial class TestPage : ContentPage
                 .Value(e => e.Path("SliderValue"))
                 .Margin(new Thickness(50, 30)),
 
-            new Border(e => e
-                .SizeRequest(270, 450)
-                .StrokeShape(new RoundRectangle().CornerRadius(40))
-                .BackgroundColor(AppColors.Gray950))
+            new Border
             {
-                new Grid(e => e.RowDefinitions(e => e.Star().Star(2).Star()))
+                e => e
+                    .SizeRequest(270, 450)
+                    .StrokeShape(new RoundRectangle().CornerRadius(40))
+                    .BackgroundColor(AppColors.Gray950),
+
+                new Grid
                 {
+                    e => e.RowDefinitions(e => e.Star().Star(2).Star()),
+
                     new Label()
                         .Text(e => e.Path("Value").Source(slider).StringFormat("Value : {0:F1}"))
                         .FontSize(45)

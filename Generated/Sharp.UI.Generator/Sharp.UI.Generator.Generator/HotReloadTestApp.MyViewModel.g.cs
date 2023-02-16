@@ -20,17 +20,6 @@ namespace HotReloadTestApp
             myViewModel = this;
         }
 
-        public MyViewModel(System.Action<MyViewModel> configure) 
-        {
-            configure(this);
-        }
-
-        public MyViewModel(out MyViewModel myViewModel, System.Action<MyViewModel> configure) 
-        {
-            myViewModel = this;
-            configure(this);
-        }
-
         // ----- bindable properties -----
 
         public static readonly Microsoft.Maui.Controls.BindableProperty CounterProperty =

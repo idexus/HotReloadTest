@@ -18,17 +18,6 @@ namespace HotReloadTestApp
             testPage = this;
         }
 
-        public TestPage(HotReloadTestApp.MyViewModel viewModel, System.Action<TestPage> configure) : this(viewModel)
-        {
-            configure(this);
-        }
-
-        public TestPage(HotReloadTestApp.MyViewModel viewModel, out TestPage testPage, System.Action<TestPage> configure) : this(viewModel)
-        {
-            testPage = this;
-            configure(this);
-        }
-
         // ----- set value method -----
 
         public new void SetValue(Microsoft.Maui.Controls.BindableProperty property, object value)
