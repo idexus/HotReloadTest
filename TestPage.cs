@@ -12,7 +12,7 @@ public partial class TestPage : ContentPage
         BindingContext = viewModel;
         Resources = AppResources.Default;
 
-        Content = new VStack
+        Content = new VStack(out var vStack)
         {
             e => e.VerticalOptions(LayoutOptions.Center),
 
@@ -26,10 +26,14 @@ public partial class TestPage : ContentPage
                     {
                         await Task.Delay(100);
                         await label.RotateTo(360, 300);
+                        await vStack.RotateYTo(15, 100);
+                        await vStack.RotateYTo(0, 100);
+                        await vStack.RotateYTo(-15, 100);
+                        await vStack.RotateYTo(0, 100);
                     });
                 }),
 
-            new Slider(1, 20, 1, out var slider)
+            new Slider(1, 30, 1, out var slider)
                 .Value(e => e.Path("SliderValue"))
                 .Margin(new Thickness(50, 30)),
 
