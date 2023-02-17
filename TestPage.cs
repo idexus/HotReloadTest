@@ -26,14 +26,16 @@ public partial class TestPage : ContentPage
                     .HorizontalOptions(LayoutOptions.Center)
                     .Configure(label =>
                     {
-                        Task.Run(async () =>
+                        Task.Run(async () => 
                         {
                             await Task.Delay(200);
-                            await label.RotateTo(360, 300);
+                            _ = label.RotateTo(360, 600);
                             await vStack.RotateYTo(15, 100);
+                            _ = vStack.ScaleTo(0.7, 200);
                             await vStack.RotateYTo(0, 100);
                             await vStack.RotateYTo(-15, 100);
                             await vStack.RotateYTo(0, 100);
+                            _ = vStack.ScaleTo(1, 200);
                         });
                     }),
 
