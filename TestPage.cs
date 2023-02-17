@@ -14,13 +14,20 @@ public partial class TestPage : ContentPage
 
         Content = new VStack
         {
-            e => e
-                .VerticalOptions(LayoutOptions.Center),
+            e => e.VerticalOptions(LayoutOptions.Center),
 
             new Label("Hot Reload :)")
                 .FontSize(45)
                 .TextColor(Colors.Red)
-                .HorizontalOptions(LayoutOptions.Center),
+                .HorizontalOptions(LayoutOptions.Center)
+                .Configure(label =>
+                {
+                    Task.Run(async () =>
+                    {
+                        await Task.Delay(100);
+                        await label.RotateTo(360, 300);
+                    });
+                }),
 
             new Slider(1, 20, 1, out var slider)
                 .Value(e => e.Path("SliderValue"))
