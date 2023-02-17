@@ -56,7 +56,7 @@ public partial class TestPage : ContentPage
 
                         new Label()
                             .Text(e => e.Path("Value").Source(slider).StringFormat("Value : {0:F1}"))
-                            .FontSize(45)
+                            .FontSize(40)
                             .TextColor(Colors.DarkGray)
                             .HorizontalOptions(LayoutOptions.Center)
                             .VerticalOptions(LayoutOptions.Center),
@@ -82,9 +82,13 @@ public partial class TestPage : ContentPage
                     .TextColor(Colors.White)
                     .FontSize(20)
                     .WidthRequest(270)
-                    .OnClicked((Button sender) =>
+                    .OnClicked(async (Button sender) =>
                     {
                         viewModel.Count();
+                        await vStack.RotateYTo(15, 100);
+                        await vStack.RotateYTo(0, 100);
+                        await vStack.RotateYTo(-15, 100);
+                        await vStack.RotateYTo(0, 100);
                     })
             }
         };
