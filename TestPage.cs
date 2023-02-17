@@ -16,26 +16,18 @@ public partial class TestPage : ContentPage
         {
             e => e.BackgroundColor(Colors.Black),
 
-            new VStack(out var vStack)
+            new VStack(out var vStack, e => e.VerticalOptions(LayoutOptions.Center))
             {
-                e => e.VerticalOptions(LayoutOptions.Center),
-
                 new Label("Hot Reload :)")
                     .FontSize(45)
-                    .TextColor(Colors.Red)
+                    .TextColor(AppColors.Gray200)
                     .HorizontalOptions(LayoutOptions.Center)
                     .Configure(label =>
                     {
                         Task.Run(async () => 
                         {
-                            await Task.Delay(200);
-                            _ = label.RotateTo(360, 600);
-                            await vStack.RotateYTo(15, 100);
-                            _ = vStack.ScaleTo(0.7, 200);
-                            await vStack.RotateYTo(0, 100);
-                            await vStack.RotateYTo(-15, 100);
-                            await vStack.RotateYTo(0, 100);
-                            _ = vStack.ScaleTo(1, 200);
+                            await Task.Delay(100);
+                            await label.RotateTo(360, 300);
                         });
                     }),
 
@@ -43,13 +35,11 @@ public partial class TestPage : ContentPage
                     .Value(e => e.Path("SliderValue"))
                     .Margin(new Thickness(50, 30)),
 
-                new Border
+                new Border(e => e
+                    .SizeRequest(270, 450)
+                    .StrokeShape(new RoundRectangle().CornerRadius(40))
+                    .BackgroundColor(AppColors.Gray950))
                 {
-                    e => e
-                        .SizeRequest(270, 450)
-                        .StrokeShape(new RoundRectangle().CornerRadius(40))
-                        .BackgroundColor(AppColors.Gray950),
-
                     new Grid
                     {
                         e => e.RowDefinitions(e => e.Star().Star(2).Star()),
@@ -72,10 +62,11 @@ public partial class TestPage : ContentPage
                 },
 
                 new Label()
-                    .Text(e => e.Path("Counter"))
-                    .FontSize(40)
+                    .TextColor(AppColors.Gray200)
+                    .Text(e => e.Path("Counter").StringFormat("Conter : {0}"))
+                    .FontSize(30)
                     .HorizontalOptions(LayoutOptions.Center)
-                    .Margin(10),
+                    .Margin(30),
 
                 new Button("Count")
                     .BackgroundColor(AppColors.Gray950)

@@ -60,7 +60,7 @@
 		<None Include="$(CompilerGeneratedFilesOutputPath)/Sharp.UI.Generator/**/*.cs" />
     </ItemGroup>
 	<ItemGroup>
-	  <PackageReference Include="Sharp.UI" Version="0.3.1-alpha.1" />
+	  <PackageReference Include="Sharp.UI" Version="0.3.1-alpha.2" />
 	</ItemGroup>
 	<ItemGroup>
 	  <Compile Update="Platforms\Windows\App.xaml.cs">
