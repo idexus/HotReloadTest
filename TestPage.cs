@@ -24,7 +24,7 @@ public partial class TestPage : ContentPage
                 {
                     Task.Run(async () =>
                     {
-                        await Task.Delay(100);
+                        await Task.Delay(200);
                         await label.RotateTo(360, 300);
                         await vStack.RotateYTo(15, 100);
                         await vStack.RotateYTo(0, 100);
