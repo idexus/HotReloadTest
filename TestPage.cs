@@ -1,5 +1,6 @@
 ﻿namespace HotReloadTestApp;
 
+using Microsoft.Maui.Controls.Shapes;
 using Sharp.UI;
 
 [SharpObject]
@@ -40,10 +41,8 @@ public partial class TestPage : ContentPage
                     .StrokeShape(new RoundRectangle().CornerRadius(40))
                     .BackgroundColor(AppColors.Gray950))
                 {
-                    new Grid
+                    new Grid(e => e.RowDefinitions(e => e.Star().Star(2).Star()))
                     {
-                        e => e.RowDefinitions(e => e.Star().Star(2).Star()),
-
                         new Label()
                             .Text(e => e.Path("Value").Source(slider).StringFormat("Value : {0:F1}"))
                             .FontSize(40)

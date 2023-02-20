@@ -1,5 +1,6 @@
 ﻿namespace HotReloadTestApp;
 
+using Microsoft.Maui.Controls.Shapes;
 using Sharp.UI;
 
 public class AppResources

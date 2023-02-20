@@ -55,13 +55,14 @@
 		<EmitCompilerGeneratedFiles>true</EmitCompilerGeneratedFiles>
 		<CompilerGeneratedFilesOutputPath>Generated</CompilerGeneratedFilesOutputPath>
     </PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net7.0-ios|AnyCPU'">
+	  <CreatePackage>false</CreatePackage>
+	</PropertyGroup>
 	<ItemGroup>
 		<Compile Remove="$(CompilerGeneratedFilesOutputPath)/**/*.cs" />
-		<None Include="$(CompilerGeneratedFilesOutputPath)/Sharp.UI.Generator/**/*.cs" />
+		<None Include="$(CompilerGeneratedFilesOutputPath)/Sharp.UI.Generator.SharpObjects/**/*.cs" />
+		<None Include="$(CompilerGeneratedFilesOutputPath)/Sharp.UI.Generator.Extensions/**/*.cs" />
     </ItemGroup>
-	<ItemGroup>
-	  <PackageReference Include="Sharp.UI" Version="0.3.1-alpha.2" />
-	</ItemGroup>
 	<ItemGroup>
 	  <Compile Update="Platforms\Windows\App.xaml.cs">
 	    <DependentUpon>%(Filename)</DependentUpon>
@@ -73,9 +74,15 @@
 	  </MauiXaml>
 	</ItemGroup>
 	<ItemGroup>
+	  <None Remove="Sharp.UI" />
+	</ItemGroup>
+	<ItemGroup>
 	  <None Update="Platforms\Windows\Package.appxmanifest">
 	    <SubType>Designer</SubType>
 	  </None>
 	</ItemGroup>
 
+	<ItemGroup>
+	  <PackageReference Include="Sharp.UI" Version="0.4.0-alpha" />
+	</ItemGroup>
 </Project>
