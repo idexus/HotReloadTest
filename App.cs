@@ -7,6 +7,6 @@ public partial class App : Application
 {
     public App()
     {
-        MainPage = ActivatorUtilities.CreateInstance<TestPage>(Application.Services);
+        MainPage = new TestPage();
     }
 }

@@ -75,6 +75,7 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <None Remove="Sharp.UI" />
+	  <None Remove="Sharp.UI.Extensions" />
 	</ItemGroup>
 	<ItemGroup>
 	  <None Update="Platforms\Windows\Package.appxmanifest">
@@ -83,6 +84,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Sharp.UI" Version="0.4.0-alpha" />
+	  <PackageReference Include="Sharp.UI.Extensions" Version="0.4.0-alpha" />
 	</ItemGroup>
 </Project>
