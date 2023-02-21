@@ -3,38 +3,51 @@
 using Microsoft.Maui.Controls.Shapes;
 using Sharp.UI;
 
-[SharpObject]
 public partial class TestPage : ContentPage
 {
-    MyViewModel viewModel => BindingContext as MyViewModel;
+    int count = 0;
 
-    public TestPage(MyViewModel viewModel)
+    Button button;
+
+    public TestPage()
     {
-        BindingContext = viewModel;
-        Resources = AppResources.Default;
-
-        Content = new Grid
+        Resources = new ResourceDictionary
         {
-            e => e.BackgroundColor(Colors.Black),
+            new Style<Label>(e => e
+                .TextColor(AppColors.Gray200)
+                .HorizontalOptions(LayoutOptions.Center)
+                .VerticalOptions(LayoutOptions.Center)),
 
-            new VStack(out var vStack, e => e.VerticalOptions(LayoutOptions.Center))
+            new Style<Button>(e => e
+                .BackgroundColor(AppColors.Gray950)
+                .Padding(20)
+                .CornerRadius(10))
             {
-                new Label("Hot Reload :)")
-                    .FontSize(45)
+                new VisualState<Button>(VisualStates.Button.Normal, e => e
+                    .FontSize(50)
                     .TextColor(AppColors.Gray200)
-                    .HorizontalOptions(LayoutOptions.Center)
-                    .Configure(label =>
-                    {
-                        Task.Run(async () => 
-                        {
-                            await Task.Delay(100);
-                            await label.RotateTo(360, 300);
-                        });
-                    }),
+                    .SizeRequest(270,120)),
 
-                new Slider(1, 30, 1, out var slider)
+                new VisualState<Button>(VisualStates.Button.Disabled, e => e
+                    .FontSize(35)
+                    .TextColor(AppColors.Gray600)
+                    .SizeRequest(180,80))
+            }
+        };
+
+        Content = new Grid(e => e.BackgroundColor(Colors.Black))
+        {
+            new VerticalStackLayout(out var vStack, e => e.VerticalOptions(LayoutOptions.Center))
+            {
+                new Label(out var label)
+                    .Text("Only in Code :)")
+                    .FontSize(45),
+
+                new Slider(out var slider)
+                    .Minimum(1).Maximum(30)
                     .Value(e => e.Path("SliderValue"))
-                    .Margin(new Thickness(50, 30)),
+                    .Margin(new Thickness(50, 30))
+                    .OnValueChanged(slider => button.IsEnabled = slider.Value < 10),
 
                 new Border(e => e
                     .SizeRequest(270, 450)
@@ -45,40 +58,33 @@ public partial class TestPage : ContentPage
                     {
                         new Label()
                             .Text(e => e.Path("Value").Source(slider).StringFormat("Value : {0:F1}"))
-                            .FontSize(40)
-                            .TextColor(Colors.DarkGray)
-                            .HorizontalOptions(LayoutOptions.Center)
-                            .VerticalOptions(LayoutOptions.Center),
+                            .FontSize(40),
 
-                        new Image("dotnet_bot.png").Row(1),
+                        new Image().Source("dotnet_bot.png").Row(1),
 
-                        new Label("Hello, World!").Row(2)
+                        new Label()
+                            .Text("Hello, World!")
+                            .Row(2)
                             .FontSize(30)
                             .TextColor(Colors.DarkGray)
-                            .HorizontalOptions(LayoutOptions.Center)
-                            .VerticalOptions(LayoutOptions.Center)
                     }
                 },
 
-                new Label()
-                    .TextColor(AppColors.Gray200)
-                    .Text(e => e.Path("Counter").StringFormat("Conter : {0}"))
-                    .FontSize(30)
-                    .HorizontalOptions(LayoutOptions.Center)
-                    .Margin(30),
-
-                new Button("Count")
-                    .BackgroundColor(AppColors.Gray950)
-                    .TextColor(Colors.White)
-                    .FontSize(20)
-                    .WidthRequest(270)
-                    .OnClicked(async (Button sender) =>
+                new Button(out button)
+                    .Text("Click me")
+                    .Margin(20)
+                    .OnClicked(async (Button b) =>
                     {
-                        viewModel.Count();
+                        count++;
+                        b.Text = $"Clicked {count} ";
+                        b.Text += count == 1 ? "time" : "times";
+
                         await vStack.RotateYTo(15, 100);
                         await vStack.RotateYTo(0, 100);
                         await vStack.RotateYTo(-15, 100);
                         await vStack.RotateYTo(0, 100);
+
+                        await label.RotateTo(360 * (count % 2), 300);
                     })
             }
         };
