@@ -24,12 +24,12 @@ public partial class TestPage : ContentPage
                 .CornerRadius(10))
             {
                 new VisualState<Button>(VisualStates.Button.Normal, e => e
-                    .FontSize(50)
+                    .FontSize(33)
                     .TextColor(AppColors.Gray200)
-                    .SizeRequest(270,120)),
+                    .SizeRequest(270,110)),
 
                 new VisualState<Button>(VisualStates.Button.Disabled, e => e
-                    .FontSize(35)
+                    .FontSize(20)
                     .TextColor(AppColors.Gray600)
                     .SizeRequest(180,80))
             }
@@ -72,7 +72,7 @@ public partial class TestPage : ContentPage
 
                 new Button(out button)
                     .Text("Click me")
-                    .Margin(20)
+                    .Margin(30)
                     .OnClicked(async (Button b) =>
                     {
                         count++;
