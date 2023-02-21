@@ -8,10 +8,35 @@ public partial class TestPage : ContentPage
     int count = 0;
 
     VerticalStackLayout vStack;
+    Button button;
     Label label;
 
     public TestPage()
     {
+        Resources = new ResourceDictionary
+        {
+            new Style<Label>(e => e
+                .TextColor(AppColors.Gray200)
+                .HorizontalOptions(LayoutOptions.Center)
+                .VerticalOptions(LayoutOptions.Center)),
+
+            new Style<Button>(e => e
+                .BackgroundColor(AppColors.Gray950)
+                .Padding(20)
+                .CornerRadius(10))
+            {
+                new VisualState<Button>(VisualStates.Button.Normal, e => e
+                    .FontSize(60)
+                    .TextColor(AppColors.Gray200)
+                    .SizeRequest(270,120)),
+
+                new VisualState<Button>(VisualStates.Button.Disabled, e => e
+                    .FontSize(35)
+                    .TextColor(AppColors.Gray600)
+                    .SizeRequest(180,80))
+            }
+        };
+
         Content = new Grid
         {
             e => e.BackgroundColor(Colors.Black),
@@ -25,15 +50,14 @@ public partial class TestPage : ContentPage
                 new Label()
                     .Assign(out label)
                     .Text("Only in Code :)")
-                    .FontSize(45)
-                    .TextColor(AppColors.Gray200)
-                    .HorizontalOptions(LayoutOptions.Center),
+                    .FontSize(45),
 
                 new Slider()
-                    .Minimum(1).Maximum(30)
                     .Assign(out var slider)
+                    .Minimum(1).Maximum(30)
                     .Value(e => e.Path("SliderValue"))
-                    .Margin(new Thickness(50, 30)),
+                    .Margin(new Thickness(50, 30))
+                    .OnValueChanged(slider => button.IsEnabled = slider.Value < 10),
 
                 new Border()
                     .Content(new Grid()
@@ -42,10 +66,7 @@ public partial class TestPage : ContentPage
 
                         new Label()
                             .Text(e => e.Path("Value").Source(slider).StringFormat("Value : {0:F1}"))
-                            .FontSize(40)
-                            .TextColor(Colors.DarkGray)
-                            .HorizontalOptions(LayoutOptions.Center)
-                            .VerticalOptions(LayoutOptions.Center),
+                            .FontSize(40),
 
                         new Image().Source("dotnet_bot.png").Row(1),
 
@@ -54,8 +75,6 @@ public partial class TestPage : ContentPage
                             .Row(2)
                             .FontSize(30)
                             .TextColor(Colors.DarkGray)
-                            .HorizontalOptions(LayoutOptions.Center)
-                            .VerticalOptions(LayoutOptions.Center)
                     })
                     .SizeRequest(270, 450)
                     .StrokeShape(new RoundRectangle().CornerRadius(40))
@@ -63,18 +82,13 @@ public partial class TestPage : ContentPage
 
                 new Button()
                     .Text("Click me")
-                    .Padding(20)
+                    .Assign(out button)
                     .Margin(20)
-                    .BackgroundColor(AppColors.Gray950)
-                    .TextColor(Colors.White)
-                    .FontSize(20)
-                    .WidthRequest(270)
-                    .CornerRadius(10)
-                    .OnClicked(async (Button button) =>
+                    .OnClicked(async (Button b) =>
                     {
                         count++;
-                        button.Text = $"Clicked {count} ";
-                        button.Text += count == 1 ? "time" : "times";
+                        b.Text = $"Clicked {count} ";
+                        b.Text += count == 1 ? "time" : "times";
 
                         await vStack.RotateYTo(15, 100);
                         await vStack.RotateYTo(0, 100);
