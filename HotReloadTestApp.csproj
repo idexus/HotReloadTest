@@ -83,6 +83,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Sharp.UI" Version="0.4.1-alpha" />
+	  <PackageReference Include="Sharp.UI" Version="0.4.2-alpha" />
 	</ItemGroup>
 </Project>

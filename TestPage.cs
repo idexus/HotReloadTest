@@ -8,6 +8,7 @@ public partial class TestPage : ContentPage
     int count = 0;
 
     Button button;
+    Switch testSwitch;
 
     public TestPage()
     {
@@ -21,17 +22,26 @@ public partial class TestPage : ContentPage
             new Style<Button>(e => e
                 .BackgroundColor(AppColors.Gray950)
                 .Padding(20)
-                .CornerRadius(10))
+                .CornerRadius(10)
+                .WidthRequest(270))
             {
                 new VisualState<Button>(VisualStates.Button.Normal, e => e
                     .FontSize(33)
-                    .TextColor(AppColors.Gray200)
-                    .SizeRequest(270,110)),
+                    .TextColor(AppColors.Gray200))
+                {
+                    async button => {
+                        await button.RotateTo(0);   // create animations inside VisualState
+                    }
+                },
 
                 new VisualState<Button>(VisualStates.Button.Disabled, e => e
                     .FontSize(20)
-                    .TextColor(AppColors.Gray600)
-                    .SizeRequest(180,80))
+                    .TextColor(AppColors.Gray600))
+                {
+                    async button => {
+                        await button.RotateTo(180);
+                    }
+                },
             }
         };
 
@@ -49,12 +59,9 @@ public partial class TestPage : ContentPage
                     .Margin(new Thickness(50, 30))
                     .OnValueChanged(slider => button.IsEnabled = slider.Value < 10),
 
-                new Border(e => e
-                    .SizeRequest(270, 450)
-                    .StrokeShape(new RoundRectangle().CornerRadius(40))
-                    .BackgroundColor(AppColors.Gray950))
+                new Border
                 {
-                    new Grid(e => e.RowDefinitions(e => e.Star().Star(2).Star()))
+                    new Grid(e => e.RowDefinitions(e => e.Star(1.3).Star(3).Star().Star()))
                     {
                         new Label()
                             .Text(e => e.Path("Value").Source(slider).StringFormat("Value : {0:F1}"))
@@ -66,8 +73,35 @@ public partial class TestPage : ContentPage
                             .Text("Hello, World!")
                             .Row(2)
                             .FontSize(30)
-                            .TextColor(Colors.DarkGray)
-                    }
+                            .TextColor(Colors.DarkGray),
+
+                        new Switch(out testSwitch).Row(3)
+                            .VerticalOptions(LayoutOptions.Center)
+                            .HorizontalOptions(LayoutOptions.Center)
+                    },
+
+                    e => e
+                        .SizeRequest(270, 450)
+                        .BackgroundColor(AppColors.Gray950)
+                        .StrokeShape(new RoundRectangle().CornerRadius(40))
+                        .VisualStateGroups(new VisualStateGroupList
+                        {
+                            new VisualState<Border> {
+                                async border => {
+                                    await border.AnimateBackgroundColorTo(Colors.Red, 500);
+                                    await label.RotateXTo(360, 400);
+                                },
+                                new StateTrigger().IsActive(e => e.Path("IsToggled").Source(testSwitch))
+                            },
+
+                            new VisualState<Border> {
+                                async border => {
+                                    await border.AnimateBackgroundColorTo(AppColors.Gray950, 500);
+                                    await label.RotateXTo(0, 400);
+                                },
+                                new StateTrigger().IsActive(e => e.Path("IsToggled").Source(testSwitch).Negate())
+                            }
+                        }),
                 },
 
                 new Button(out button)
@@ -79,11 +113,7 @@ public partial class TestPage : ContentPage
                         b.Text = $"Clicked {count} ";
                         b.Text += count == 1 ? "time" : "times";
 
-                        await vStack.RotateYTo(15, 100);
-                        await vStack.RotateYTo(0, 100);
-                        await vStack.RotateYTo(-15, 100);
-                        await vStack.RotateYTo(0, 100);
-
+                        await vStack.RotateYTo(((count % 4) switch { 0 => 0, 1 => 20, 2 => 0, _ => -20 }));
                         await label.RotateTo(360 * (count % 2), 300);
                     })
             }

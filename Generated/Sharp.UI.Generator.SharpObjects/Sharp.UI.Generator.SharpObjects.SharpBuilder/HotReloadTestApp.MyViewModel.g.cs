@@ -8,7 +8,6 @@
 namespace HotReloadTestApp
 {
 	using Sharp.UI;
-
     public partial class MyViewModel
 	{
 
