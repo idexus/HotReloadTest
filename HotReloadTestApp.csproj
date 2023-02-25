@@ -84,6 +84,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <PackageReference Include="Sharp.UI.Extensions" Version="0.4.2-alpha" />
+	  <PackageReference Include="Sharp.UI.Extensions" Version="0.4.3-alpha" />
 	</ItemGroup>
 </Project>

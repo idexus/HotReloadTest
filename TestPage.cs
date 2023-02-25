@@ -17,8 +17,7 @@ public partial class TestPage : ContentPage
         {
             new Style<Label>(e => e
                 .TextColor(AppColors.Gray200)
-                .HorizontalOptions(LayoutOptions.Center)
-                .VerticalOptions(LayoutOptions.Center)),
+                .CenterInContainer()),
 
             new Style<Button>(e => e
                 .BackgroundColor(AppColors.Gray950)
@@ -54,7 +53,7 @@ public partial class TestPage : ContentPage
             {
                 e => e
                     .Assign(out vStack)
-                    .VerticalOptions(LayoutOptions.Center),
+                    .CenterVertically(),
 
                 new Label()
                     .Assign(out label)
@@ -65,13 +64,13 @@ public partial class TestPage : ContentPage
                     .Assign(out var slider)
                     .Minimum(1).Maximum(30)
                     .Value(e => e.Path("SliderValue"))
-                    .Margin(new Thickness(50, 30))
+                    .Margin(50, 30)
                     .OnValueChanged(slider => button.IsEnabled = slider.Value < 10),
 
                 new Border()
                     .Content(new Grid()
                     {
-                        e => e.RowDefinitions(e => e.Star(1.3).Star(3).Star().Star()),
+                        e => e.RowDefinitions(e => e.Star(1.3).Star(3).Star(count: 2)),
 
                         new Label()
                             .Text(e => e.Path("Value").Source(slider).StringFormat("Value : {0:F1}"))
@@ -87,8 +86,7 @@ public partial class TestPage : ContentPage
 
                         new Switch().Row(3)
                             .Assign(out var testSwitch)
-                            .VerticalOptions(LayoutOptions.Center)
-                            .HorizontalOptions(LayoutOptions.Center)
+                            .CenterInContainer()
                     })
                     .SizeRequest(270, 450)
                     .StrokeShape(new RoundRectangle().CornerRadius(40))
