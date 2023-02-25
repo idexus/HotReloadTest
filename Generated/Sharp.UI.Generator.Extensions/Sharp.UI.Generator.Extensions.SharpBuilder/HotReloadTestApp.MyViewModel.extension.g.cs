@@ -8,60 +8,61 @@
 
 namespace HotReloadTestApp
 {
+    using Sharp.UI.Internal;
     using Sharp.UI;
-
+    
     public static partial class MyViewModelExtension
     {
-        public static T Counter<T>(this T obj,
+        public static T Counter<T>(this T self,
             int counter)
             where T : HotReloadTestApp.MyViewModel
         {
-            obj.Counter = counter;
-            return obj;
+            self.SetValueOrAddSetter(HotReloadTestApp.MyViewModel.CounterProperty, counter);
+            return self;
         }
         
-        public static T Counter<T>(this T obj,
-            System.Func<ValueBuilder<int>, ValueBuilder<int>> buidValue)
+        public static T Counter<T>(this T self,
+            System.Func<ValueBuilder<int>, ValueBuilder<int>> buildValue)
             where T : HotReloadTestApp.MyViewModel
         {
-            var builder = buidValue(new ValueBuilder<int>());
-            if (builder.ValueIsSet()) obj.Counter = builder.GetValue();
-            return obj;
+            var builder = buildValue(new ValueBuilder<int>());
+            if (builder.ValueIsSet()) self.SetValueOrAddSetter(HotReloadTestApp.MyViewModel.CounterProperty, builder.GetValue());
+            return self;
         }
         
-        public static T Counter<T>(this T obj,
-            System.Func<BindingBuilder<int>, BindingBuilder<int>> buidBinding)
+        public static T Counter<T>(this T self,
+            System.Func<BindingBuilder<int>, BindingBuilder<int>> buildBinding)
             where T : HotReloadTestApp.MyViewModel
         {
-            var builder = buidBinding(new BindingBuilder<int>(obj, HotReloadTestApp.MyViewModel.CounterProperty));
+            var builder = buildBinding(new BindingBuilder<int>(self, HotReloadTestApp.MyViewModel.CounterProperty));
             builder.BindProperty();
-            return obj;
+            return self;
         }
         
-        public static T SliderValue<T>(this T obj,
+        public static T SliderValue<T>(this T self,
             double sliderValue)
             where T : HotReloadTestApp.MyViewModel
         {
-            obj.SliderValue = sliderValue;
-            return obj;
+            self.SetValueOrAddSetter(HotReloadTestApp.MyViewModel.SliderValueProperty, sliderValue);
+            return self;
         }
         
-        public static T SliderValue<T>(this T obj,
-            System.Func<ValueBuilder<double>, ValueBuilder<double>> buidValue)
+        public static T SliderValue<T>(this T self,
+            System.Func<ValueBuilder<double>, ValueBuilder<double>> buildValue)
             where T : HotReloadTestApp.MyViewModel
         {
-            var builder = buidValue(new ValueBuilder<double>());
-            if (builder.ValueIsSet()) obj.SliderValue = builder.GetValue();
-            return obj;
+            var builder = buildValue(new ValueBuilder<double>());
+            if (builder.ValueIsSet()) self.SetValueOrAddSetter(HotReloadTestApp.MyViewModel.SliderValueProperty, builder.GetValue());
+            return self;
         }
         
-        public static T SliderValue<T>(this T obj,
-            System.Func<BindingBuilder<double>, BindingBuilder<double>> buidBinding)
+        public static T SliderValue<T>(this T self,
+            System.Func<BindingBuilder<double>, BindingBuilder<double>> buildBinding)
             where T : HotReloadTestApp.MyViewModel
         {
-            var builder = buidBinding(new BindingBuilder<double>(obj, HotReloadTestApp.MyViewModel.SliderValueProperty));
+            var builder = buildBinding(new BindingBuilder<double>(self, HotReloadTestApp.MyViewModel.SliderValueProperty));
             builder.BindProperty();
-            return obj;
+            return self;
         }
         
     }

@@ -7,8 +7,7 @@
 
 namespace HotReloadTestApp
 {
-	using Sharp.UI;
-    public partial class MyViewModel
+	public partial class MyViewModel
 	{
 
         // ----- constructors -----

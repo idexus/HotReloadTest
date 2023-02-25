@@ -56,7 +56,7 @@ public partial class TestPage : ContentPage
                 new Slider(out var slider)
                     .Minimum(1).Maximum(30)
                     .Value(e => e.Path("SliderValue"))
-                    .Margin(new Thickness(50, 30))
+                    .Margin(50, 30)
                     .OnValueChanged(slider => button.IsEnabled = slider.Value < 10),
 
                 new Border
