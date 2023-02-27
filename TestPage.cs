@@ -15,6 +15,8 @@ public partial class TestPage : ContentPage
     {
         Resources = new ResourceDictionary
         {
+            { "myColor", Colors.Red },
+
             new Style<Label>(e => e
                 .TextColor(AppColors.Gray200)
                 .CenterInContainer()),
@@ -58,6 +60,7 @@ public partial class TestPage : ContentPage
                 new Label()
                     .Assign(out label)
                     .Text("Only in Code :)")
+                    .TextColor(e => e.DynamicResource("myColor"))
                     .FontSize(45),
 
                 new Slider()
