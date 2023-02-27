@@ -21,21 +21,11 @@ namespace HotReloadTestApp
             return self;
         }
         
-        public static T Counter<T>(this T self,
-            System.Func<ValueBuilder<int>, ValueBuilder<int>> buildValue)
+        public static T Counter<T>(this T self, Func<PropertyContext<int>, IPropertyBuilder<int>> configure)
             where T : HotReloadTestApp.MyViewModel
         {
-            var builder = buildValue(new ValueBuilder<int>());
-            if (builder.ValueIsSet()) self.SetValueOrAddSetter(HotReloadTestApp.MyViewModel.CounterProperty, builder.GetValue());
-            return self;
-        }
-        
-        public static T Counter<T>(this T self,
-            System.Func<BindingBuilder<int>, BindingBuilder<int>> buildBinding)
-            where T : HotReloadTestApp.MyViewModel
-        {
-            var builder = buildBinding(new BindingBuilder<int>(self, HotReloadTestApp.MyViewModel.CounterProperty));
-            builder.BindProperty();
+            var context = new PropertyContext<int>(self, HotReloadTestApp.MyViewModel.CounterProperty);
+            configure(context).Build();
             return self;
         }
         
@@ -47,21 +37,11 @@ namespace HotReloadTestApp
             return self;
         }
         
-        public static T SliderValue<T>(this T self,
-            System.Func<ValueBuilder<double>, ValueBuilder<double>> buildValue)
+        public static T SliderValue<T>(this T self, Func<PropertyContext<double>, IPropertyBuilder<double>> configure)
             where T : HotReloadTestApp.MyViewModel
         {
-            var builder = buildValue(new ValueBuilder<double>());
-            if (builder.ValueIsSet()) self.SetValueOrAddSetter(HotReloadTestApp.MyViewModel.SliderValueProperty, builder.GetValue());
-            return self;
-        }
-        
-        public static T SliderValue<T>(this T self,
-            System.Func<BindingBuilder<double>, BindingBuilder<double>> buildBinding)
-            where T : HotReloadTestApp.MyViewModel
-        {
-            var builder = buildBinding(new BindingBuilder<double>(self, HotReloadTestApp.MyViewModel.SliderValueProperty));
-            builder.BindProperty();
+            var context = new PropertyContext<double>(self, HotReloadTestApp.MyViewModel.SliderValueProperty);
+            configure(context).Build();
             return self;
         }
         
