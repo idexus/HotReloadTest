@@ -19,7 +19,7 @@ public partial class TestPage : ContentPage
 
             new Style<Label>(e => e
                 .TextColor(AppColors.Gray200)
-                .CenterInContainer()),
+                .Center()),
 
             new Style<Button>(e => e
                 .BackgroundColor(AppColors.Gray950)
@@ -89,7 +89,7 @@ public partial class TestPage : ContentPage
 
                         new Switch().Row(3)
                             .Assign(out var testSwitch)
-                            .CenterInContainer()
+                            .Center()
                     })
                     .SizeRequest(270, 450)
                     .StrokeShape(new RoundRectangle().CornerRadius(40))
